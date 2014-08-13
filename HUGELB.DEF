@@ -1,0 +1,10 @@
+;=========================================================================;
+; HugeLB.DEF module definition file                                      ;
+;=========================================================================;
+
+NAME           HugeLB   WINDOWAPI
+
+DESCRIPTION    'PM Owner-Draw Listbox sample'
+PROTMODE
+HEAPSIZE       1024
+STACKSIZE      8192

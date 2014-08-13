@@ -1,0 +1,23 @@
+/* ********************************************************************** */
+/*                                                                        */
+/*     HugeLB.rc                                                          */
+/*                                                                        */
+/*                                                                        */
+/* ********************************************************************** */
+
+#include <os2.h>
+#include "HugeLB.h"
+
+
+DLGTEMPLATE ID_DLG_WIN LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Huge Listbox Sample", ID_DLG_WIN, 7, 29, 352, 144, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        GROUPBOX        "Owner-Drawn List Box containing 2000 items of 128 chars "
+                        "each", 11, 9, 25, 330, 110
+        LISTBOX         ID_LISTBOX, 25, 32, 296, 95, LS_OWNERDRAW
+        PUSHBUTTON      "Quit", DID_OK, 153, 5, 40, 14
+    END
+END
+
