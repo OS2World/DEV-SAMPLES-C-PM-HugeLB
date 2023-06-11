@@ -71,6 +71,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "HugeLB.h"
 
 
@@ -82,8 +83,8 @@
 HAB     hab;
 HMQ     hmq;
 
-PSZ    szMainTitle  = "Huge ListBox Sample" ;
-PSZ    szErrorTitle = "HugeLB Error" ;
+PSZ    szMainTitle  = (PSZ) "Huge ListBox Sample" ;
+PSZ    szErrorTitle = (PSZ) "HugeLB Error" ;
 
         
 
@@ -108,18 +109,18 @@ MRESULT EXPENTRY DlgWindowProc( HWND, USHORT, MPARAM, MPARAM );
 /*                                                                        */
 /* ********************************************************************** */
 
-VOID main()
+int main (void)
 {
 
   if ( (hab = WinInitialize( 0L )) == (HAB) NULL ){
      printf( "HugeLB Error:  WinInitialize failed \n" );
-     return;
+     return 0;
   }
   else {
 
      if ( (hmq = WinCreateMsgQueue( hab, 0 )) == (HMQ) NULL ){
         printf( "Shell Error:  WinCreateMsgQueue failed \n" );
-        return;
+        return 0;
      }
      else {
          WinDlgBox( HWND_DESKTOP,
@@ -188,7 +189,7 @@ DlgWindowProc( HWND hwnd, USHORT msg, MPARAM mp1, MPARAM mp2 )
          swCntrl.idSession = (LONG) NULL ;
          swCntrl.uchVisibility = SWL_VISIBLE ;
          swCntrl.fbJump = SWL_JUMPABLE ;
-         strncpy( swCntrl.szSwtitle, szMainTitle, MAXNAMEL );
+         strncpy( swCntrl.szSwtitle, (const char *) szMainTitle, MAXNAMEL );
          WinCreateSwitchEntry( hab, (PSWCNTRL)&swCntrl);
 
             /* -- initialize external text array and insert list items -- */
@@ -279,7 +280,7 @@ DlgWindowProc( HWND hwnd, USHORT msg, MPARAM mp1, MPARAM mp2 )
                 /* ---- draw the text into the given rect ----- */
             WinDrawText (poiItem->hps,    
                          -1,           
-                         entries[poiItem->idItem], 
+                         (PCCH) entries[poiItem->idItem], 
                          &poiItem->rclItem,        
                          clrForeGround,
                          clrBackGround,
